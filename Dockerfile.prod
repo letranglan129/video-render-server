@@ -1,0 +1,39 @@
+FROM node:lts-bookworm
+
+# Install dependencies required for chromium
+RUN apt-get update && apt-get install -y \
+  libnss3 \
+  libdbus-1-3 \
+  libatk1.0-0 \
+  libgbm-dev \
+  libasound2 \
+  libxrandr2 \
+  libxkbcommon-dev \
+  libxfixes3 \
+  libxcomposite1 \
+  libxdamage1 \
+  libatk-bridge2.0-0 \
+  libcups2
+
+WORKDIR /app
+
+# Copy package files first (for caching)
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Install browser
+RUN npx remotion browser ensure
+
+# Create renders directory
+RUN mkdir -p renders
+
+# Environment variables for development
+ENV NODE_ENV=development
+
+# Expose ports
+EXPOSE 3000 3001
+
+# Start development server
+CMD ["npm", "run", "start"]
