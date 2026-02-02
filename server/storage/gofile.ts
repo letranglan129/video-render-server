@@ -37,7 +37,7 @@ interface UploadOptions {
 }
 
 class GofileUploader {
-    private static readonly UPLOAD_ENDPOINT = 'https://upload.gofile.io/uploadfile';
+    private static readonly UPLOAD_ENDPOINT = 'https://upload-ap-sgp.gofile.io/uploadfile';
     private static readonly isNode = typeof process !== 'undefined' &&
         process.versions != null &&
         process.versions.node != null;
@@ -46,7 +46,7 @@ class GofileUploader {
      * Regional upload endpoints
      */
     static readonly SERVERS = {
-        AUTO: 'https://upload.gofile.io/uploadfile',
+        AUTO: 'https://upload-ap-sgp.gofile.io/uploadfile',
         EU_PARIS: 'https://upload-eu-par.gofile.io/uploadfile',
         NA_PHOENIX: 'https://upload-na-phx.gofile.io/uploadfile',
         AP_SINGAPORE: 'https://upload-ap-sgp.gofile.io/uploadfile',

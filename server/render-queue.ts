@@ -133,11 +133,14 @@ export const makeRenderQueue = ({
 			try {
 				console.log("Uploading to Gofile")
 				const result = await GofileUploader.uploadFromPath(`./renders/${jobId}.mp4`);
+				if(result.downloadPage)
 				jobs.set(jobId, {
 					status: "completed",
 					videoUrl: convertUrl(result.downloadPage!),
 					data: job.data,
-				});
+				}); else {
+					throw new Error("Upload failed to Gofile")
+				}
 			} catch (error) {
 				console.log("Error uploading to Gofile")
 				console.log("Start uploading to S3")
@@ -147,7 +150,7 @@ export const makeRenderQueue = ({
 					key: `${jobId}.mp4`,
 					hex: Buffer.from(await fs.readFile(`./renders/${jobId}.mp4`)).toString('hex'),
 				})
-
+				console.log("Url: ": url)
 				jobs.set(jobId, {
 					status: "completed",
 					videoUrl: url!,
