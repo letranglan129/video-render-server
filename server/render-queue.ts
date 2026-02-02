@@ -150,7 +150,7 @@ export const makeRenderQueue = ({
 					key: `${jobId}.mp4`,
 					hex: Buffer.from(await fs.readFile(`./renders/${jobId}.mp4`)).toString('hex'),
 				})
-				console.log("Url: ": url)
+				console.log("Url: ", url)
 				jobs.set(jobId, {
 					status: "completed",
 					videoUrl: url!,
