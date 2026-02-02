@@ -16,6 +16,9 @@ services:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
       - PROXY_URL=http://rotating-tor-proxy:3128
+      - CLOUDFLARE_ACCOUNT_ID=1d4410d4f4e2eb17249e85bbe7461dc2
+      - R2_ACCESS_KEY_ID=92ca49336f6346d9265d16ea229e5e27
+      - R2_SECRET_ACCESS_KEY=b9ad1c8ceed8060de0bf36dc313908957e1ebe303563d84e74811ad09f25a42c
     stdin_open: true
     tty: true
 
