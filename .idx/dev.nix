@@ -21,6 +21,7 @@
       "clear" = "docker system prune -a --volumes -f";
     };
     onStart = {
+      "pull" = "git pull origin master";
       "start_docker" = "./scripts/dev.sh";
     };
   };
