@@ -2,10 +2,6 @@
 # see: https://developers.google.com
 { pkgs, ... }: {
   # Các gói phần mềm sẽ được cài đặt trong workspace
-  packages = [
-    pkgs.docker
-    pkgs.docker-compose
-  ];
 
   env = {};
 
